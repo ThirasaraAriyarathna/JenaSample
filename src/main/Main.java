@@ -11,6 +11,9 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.util.FileManager;
 
 public class Main {
+    private static final String RDF_PREFIX = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>";
+    private static final String FOAF_PREFIX = "PREFIX foaf: <http://xmlns.com/foaf/0.1/>";
+    
     public static void main(String args[]){
         //Reading a RDF/XML file using the FOAF Ontology
         //FOAF ontology: http://xmlns.com//foaf/spec/
@@ -28,8 +31,8 @@ public class Main {
         Model model = FileManager.get().loadModel("/home/thirasara/workspace/jena-app/src/main/data.rdf");
         
         String sparqlString = 
-                "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
-                "PREFIX foaf: <http://xmlns.com/foaf/0.1/>" +
+                RDF_PREFIX +
+                FOAF_PREFIX +
                 "SELECT * WHERE { " +
                 "?person foaf:name ?name." +
                 "?person foaf:knows ?someone." +
